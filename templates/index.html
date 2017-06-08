@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block page_content %}
+{{ wtf.quick_form(form) }}
+<div>
+    <br><br>
+    <ul class="list-group">
+        {% for line in lines %}
+            <a href="http://www.baidu.com/s?wd={{ line }} " target="_blank" class="list-group-item">{{ line }}</a>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}飞花令 - 崔晨{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<style>
+    body {
+        background: #82c458;
+    }
+    .warpper {
+        width: 70%;
+        margin:10% auto;
+        padding:2% 10%;
+        background: #fff;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+ <div class="text-center">
+    <div class="warpper">
+        {% for message in get_flashed_messages(with_categories=True) %}
+        <div class="alert alert-{{ message[0] }}">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message[1] }}
+        </div>
+        {% endfor %}
+        <div class="page-header">
+            <h1>飞花令</h1>
+        </div>
+        <br><br>
+        {% block page_content %}{% endblock %}
+        <div>
+            <br><br>
+            <hr>
+            Made by <a href="http://www.cuichen.cc" target="_blank">崔晨</a> | 
+            Email: <a href=mailto:cuichen@mail.sdu.edu.cn>cuichen@mail.sdu.edu.cn</a>
+            <br> 山东大学计算机科学与技术学院2016级 学号: 201605130115 
+        </div>
+        <hr>
+        <a href="http://flask.pocoo.org/"><img
+   src="http://flask.pocoo.org/static/badges/powered-by-flask-s.png"
+   alt="powered by Flask"
+   title="powered by Flask"></a>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}
